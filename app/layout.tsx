@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "@/app/globals.css";
+import { ThemeProvider } from "@/app/providers";
 
 export const metadata: Metadata = {
 	title: "DevFlow",
@@ -41,23 +42,25 @@ const RootLayout = ({
 	children: React.ReactNode;
 }>) => {
 	return (
-		<ClerkProvider
-			appearance={{
-				elements: {
-					formButtonPrimary: "primary-gradient",
-					footerActionLink:
-						"primary-text-gradient hover:text-primary-500",
-				},
-			}}
-		>
-			<html lang="en">
-				<body
-					className={`${inter.variable} ${spaceGrotesk.variable}`}
-				>
-					{children}
-				</body>
-			</html>
-		</ClerkProvider>
+		<html lang="en">
+			<body
+				className={`${inter.variable} ${spaceGrotesk.variable}`}
+			>
+				<ThemeProvider>
+					<ClerkProvider
+						appearance={{
+							elements: {
+								formButtonPrimary: "primary-gradient",
+								footerActionLink:
+									"primary-text-gradient hover:text-primary-500",
+							},
+						}}
+					>
+						{children}
+					</ClerkProvider>
+				</ThemeProvider>
+			</body>
+		</html>
 	);
 };
 
