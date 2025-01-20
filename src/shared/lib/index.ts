@@ -1,1 +1,2 @@
-export { useTheme } from "./theme/useTheme";
+export { useTheme } from "./hooks/useTheme";
+export { cn } from "./utils";

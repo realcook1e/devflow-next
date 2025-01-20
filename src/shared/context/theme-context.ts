@@ -1,10 +1,12 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
+
+export type ThemeMode = "dark" | "light" | "system";
 
 interface Theme {
-	mode: "dark" | "light";
-	toggleMode: () => void;
+	mode: ThemeMode;
+	setMode: Dispatch<SetStateAction<ThemeMode>>;
 }
 
 export const ThemeContext = createContext<Theme | undefined>(
